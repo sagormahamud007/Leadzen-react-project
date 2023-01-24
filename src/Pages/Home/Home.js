@@ -4,7 +4,6 @@ import './Home.css'
 /*
 count
 per page=4
-
 */
 const Home = () => {
     const [categories,setCategories]= useState([])
