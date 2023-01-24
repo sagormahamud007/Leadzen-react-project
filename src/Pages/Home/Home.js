@@ -8,10 +8,12 @@ per page=4
 const Home = () => {
     const [categories,setCategories]= useState([])
     const count= [...categories]
-    console.log(count.length)
-    const [page,setPage]=useState(0)
-    const [size,setSize]=useState(4)
+    const [page,setPage]=useState(4)
+    console.log(count.slice(0,page))
     
+
+    const [size,setSize]=useState(4)
+    console.log(size)
     const pages=Math.ceil(count.length/size);
     
     useEffect(()=>{
@@ -40,7 +42,7 @@ const Home = () => {
         <tbody>
         
          {
-            categories.map(category=><>
+            count.slice(0,page).map(category=><>
              <tr>
             <th>
               <label>
@@ -80,9 +82,9 @@ const Home = () => {
   </button>)
 }
 <select onChange={event=>setSize(event.target.value)}>
-  <option selected value={4}>4</option>
+  <option selected value={5}>1</option>
   <option value={3}>3</option>
-  <option value={3}>2</option>
+  <option value={4}>4</option>
 </select>
 </div>
    </div>

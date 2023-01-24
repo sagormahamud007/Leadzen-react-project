@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const Details = () => {
@@ -7,38 +7,41 @@ const Details = () => {
     const {name:companyName,bs,catchPhrase}=company;
     const {street,city,zipcode}=address;
 
-    
+    const [toggle,setToggle]=useState(true)
 
     return (
         <div className='px-8 border mt-6 mb-8 rounded-4xl'>
-        <div className="overflow-x-auto w-full mt-8 ">
-        <table className="table w-full">
-          <thead  className='mt-7'>
-            <tr>
-              <th>Contact</th>
-              <th>Company Name</th>
-              <th>Website</th>
-              <th>Business</th>
-              <th>Hide Details</th>
-            </tr>
-          </thead>
-          <tbody>
-               <tr>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div>
-                    <div className="">{name}</div>
-                  </div>
+          <div  className="overflow-x-auto w-full mt-8 flex ">
+          {
+        toggle===true ? <>  <table  className="table w-full">
+        <thead  className='mt-7'>
+          <tr>
+            <th>Contact</th>
+            <th>Company Name</th>
+            <th>Website</th>
+            <th>Business</th>
+          </tr>
+        </thead>
+        <tbody>
+             <tr>
+            <td>
+              <div className="flex items-center space-x-3">
+                <div>
+                  <div className="">{name}</div>
                 </div>
-              </td>
-              <td>{companyName}</td>
-              <td>{website}</td>
-              <td>{bs}</td>
-            <td> <button className="btn btn-error text-white">Hide Details</button></td>
-            </tr>
-          </tbody>
-        </table>
+              </div>
+            </td>
+            <td>{companyName}</td>
+            <td>{website}</td>
+            <td>{bs}</td>
+   
+          </tr>
+        </tbody>
+      </table> </> : <></>
+       }
+        <button onClick={()=>setToggle(!toggle)}  className="btn btn-error text-white">Hide Details</button>
         </div>
+       
         <div className='border-2 p-4 mb-6 rounded-3xl shadow-md'>  
         <h3 className='font-bold'>Description</h3>
 <p className='py-2'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever <br/> since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
