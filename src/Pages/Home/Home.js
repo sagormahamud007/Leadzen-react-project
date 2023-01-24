@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Home.css'
+/*
+count
+per page=4
 
+*/
 const Home = () => {
     const [categories,setCategories]= useState([])
-    console.log(categories)
+    const count= [...categories]
+    console.log(count.length)
+    const [page,setPage]=useState(0)
+    const [size,setSize]=useState(4)
+    
+    const pages=Math.ceil(count.length/size);
     
     useEffect(()=>{
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -60,7 +70,24 @@ const Home = () => {
          }
         </tbody>
       </table>
-    </div>
+   <div className='pagination mx-auto text-center'>
+{
+  [...Array(pages).keys()].map(number=><button 
+  key={number}
+  className={page===number && 'selected'}
+  onClick={()=>setPage(number)}
+>
+  {number}
+  </button>)
+}
+<select onChange={event=>setSize(event.target.value)}>
+  <option selected value={4}>4</option>
+  <option value={3}>3</option>
+  <option value={3}>2</option>
+</select>
+</div>
+   </div>
+
         );
 };
 
