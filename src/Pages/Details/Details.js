@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const Details = () => {
@@ -7,30 +7,12 @@ const Details = () => {
     const {name:companyName,bs,catchPhrase}=company;
     const {street,city,zipcode}=address;
 
-    const [showArrowFunction, setShowArrowFunction] = useState(true);
-    
-
-//    const toggle=()=>{
-//     if(showArrowFunction){
-     
-//         setShowArrowFunction(true);
-//     }
-//     else{
-//         setShowArrowFunction(false);
-//     }
-
-//    }
-
-    const toggleArrowFunction = () => {
-        setShowArrowFunction(!showArrowFunction);
-      
-      };
     
 
     return (
         <div className='px-8 border mt-6 mb-8 rounded-4xl'>
         <div className="overflow-x-auto w-full mt-8 ">
-        <table onClick={setShowArrowFunction(true)} className="table w-full">
+        <table className="table w-full">
           <thead  className='mt-7'>
             <tr>
               <th>Contact</th>
@@ -52,7 +34,7 @@ const Details = () => {
               <td>{companyName}</td>
               <td>{website}</td>
               <td>{bs}</td>
-            <td> <button onClick={toggleArrowFunction()} className="btn btn-error text-white">Hide Details</button></td>
+            <td> <button className="btn btn-error text-white">Hide Details</button></td>
             </tr>
           </tbody>
         </table>
